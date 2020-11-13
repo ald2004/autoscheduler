@@ -1,0 +1,48 @@
+version: "2.3"
+services:
+  illparking:
+    runtime: nvidia
+    # 推理镜像名（生成的推理镜像名称）
+    image: illparking/dev:2.0
+    # 启动容器名
+    container_name: "illparking"
+    # 目录映射（可选）
+    #volumes:
+    #  - "/dev/shm/docker_images:/work/ai_lab/miner/model/"
+    #pid: "host"
+    ports:
+      # Rest服务，推理服务端口（必填）
+      - "5124:5000"
+      - "3232:3232"
+      - "2222:22"
+    environment:
+      # 在线线程数（可选）
+      MINER_ONLINE_NUM: 1
+      # 离线线程数（可选）
+      MINER_OFFLINE_NUM: 1
+      # MINER容器唯一标识（必填，每个容器MINER_ID必须唯一）
+      MINER_ID: "illparking"
+      # 项目标识
+      # MINER_PID: "AI01"
+      # 联系邮箱
+      # MINER_EMAIL: "1000@asiainfo.com"
+      # 联系电话
+      # MINER_PHONE: "13600000000"
+      # 数据库信息（离线推理服务必填）
+      # MINER_CONFIG_DB_NAME: mdb_test
+      # MINER_CONFIG_DB_USER: root
+      # MINER_CONFIG_DB_PASSWD: root@123
+      # MINER_CONFIG_DB_IP: 10.13.6.103
+      # MINER_CONFIG_DB_PORT: 3306
+      # lisence相关（必填）
+      # LISENCE_TYPE: ""
+      # LISENCE_VALUE: ""
+    tty: true
+    hostname: AI
+    devices:
+      - "/dev/nvidia0:/dev/nvidia0"
+      - "/dev/nvidia1:/dev/nvidia1"
+      - "/dev/nvidiactl:/dev/nvidiactl"
+      - "/dev/nvidia-uvm:/dev/nvidia-uvm"
+      - "/dev/nvidia-uvm-tools:/dev/nvidia-uvm-tools"
+      - "/dev/nvidia-modeset:/dev/nvidia-modeset"
