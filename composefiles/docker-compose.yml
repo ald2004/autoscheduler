@@ -25,7 +25,7 @@ services:
       # 项目标识
       # MINER_PID: "AI01"
       # 联系邮箱
-      # MINER_EMAIL: "1000@asiainfo.com"
+      # MINER_EMAIL: "1000@xxxxxx.com"
       # 联系电话
       # MINER_PHONE: "13600000000"
       # 数据库信息（离线推理服务必填）
